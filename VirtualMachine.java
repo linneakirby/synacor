@@ -390,33 +390,35 @@ public class VirtualMachine {
     void in(int a) {
 	//System.out.println("\nCase 20!");
 	a = a%32768;
-	//System.out.println(a);
+	//System.out.println("a is: "+a);
 	//System.out.println(nextline);
 	if(nextline) {
 	    String line = input.nextLine();
 	    line = line+"\n";
 	    readline = new StringReader(line);
+	    System.out.println(line);
 	    nextline = false;
 	}
 	try {
 	    //System.out.println(line);
 	    if(c != 10) {
 		c = readline.read();
-		//System.out.println(c);
-		register[a] = (char)c;
-		//System.out.println(a);
-	    }
-	    if(c == 10) {
-		nextline = true;
-		readline.close();
-		//input.close();
-		//break;
 		//System.out.println((char)c);
-		//c = input.read();
+		register[a] = (char)c;
+		//System.out.println(c);
 	    }
 	    else {
 		//register[a] = (char)c;
+		//System.out.println(c);
+		nextline = true;
+		readline.close();
+		c = 0;
+		//System.out.println(c);
+		//System.out.println(nextline);
+		//System.out.println((char)c);
+		//c = input.read();
 	    }
+	    //register[a] = (char)c;
 	    index++;
 	} catch (IOException e) {
 	    System.out.println("I/O Error!");
@@ -445,24 +447,9 @@ public class VirtualMachine {
 	return r;
     }
     
-    /*
-     * checkMem
-     * Test to see how many numbers are out of bounds
-     */
-    void checkMem() {
-	int count = 0;
-	for(int i=0; i<memory.length; i++) {
-	    if(memory[i] > 32776) {
-		count++;
-	    }
-	}
-	System.out.println(count+" numbers higher than allowed!");
-    }
-    
     public static void main(String[] args) {
 	VirtualMachine vm = new VirtualMachine();
 	vm.parseBin();
-	//vm.checkMem();
 	vm.execute();
     }
 
