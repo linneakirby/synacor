@@ -394,18 +394,19 @@ public class VirtualMachine {
 	//System.out.println(nextline);
 	if(nextline) {
 	    String line = input.nextLine();
+	    line = line+"\n";
 	    readline = new StringReader(line);
 	    nextline = false;
 	}
 	try {
 	    //System.out.println(line);
-	    if(c != -1) {
+	    if(c != 10) {
 		c = readline.read();
-		System.out.println(c);
+		//System.out.println(c);
 		register[a] = (char)c;
 		//System.out.println(a);
 	    }
-	    if(c == -1) {
+	    if(c == 10) {
 		nextline = true;
 		readline.close();
 		//input.close();
