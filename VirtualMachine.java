@@ -396,29 +396,23 @@ public class VirtualMachine {
 	    String line = input.nextLine();
 	    line = line+"\n";
 	    readline = new StringReader(line);
-	    System.out.println(line);
+	    //System.out.println(line);
 	    nextline = false;
 	}
 	try {
-	    //System.out.println(line);
+	    c = readline.read();
 	    if(c != 10) {
-		c = readline.read();
-		//System.out.println((char)c);
+		//c = readline.read();
+		//System.out.println(c);
 		register[a] = (char)c;
 		//System.out.println(c);
 	    }
-	    else {
-		//register[a] = (char)c;
-		//System.out.println(c);
+	    else if(c == 10) {
+		register[a] = (char)c;
 		nextline = true;
 		readline.close();
-		c = 0;
-		//System.out.println(c);
-		//System.out.println(nextline);
-		//System.out.println((char)c);
-		//c = input.read();
+		//c = 0;
 	    }
-	    //register[a] = (char)c;
 	    index++;
 	} catch (IOException e) {
 	    System.out.println("I/O Error!");
